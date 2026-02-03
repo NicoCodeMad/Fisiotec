@@ -1,0 +1,309 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import PricingTable from '../components/PricingTable.astro';
+import BlogCard from '../components/BlogCard.astro';
+import Footer from '../components/Footer.astro';
+import { posts } from '../data/post';
+---
+
+<Layout title="FisioVital | Fisioterapia y Osteopatía Especializada">
+	<Header />
+	
+	<main>
+		<section class="relative pt-44 pb-32 overflow-hidden">
+    <div class="absolute top-20 right-[-10%] w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl -z-10 animate-float"></div>
+    
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="grid lg:grid-cols-12 gap-16 items-center">
+            
+            <div class="lg:col-span-7 z-10 animate-fade-up">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest mb-6">
+                    Fisioterapia de Vanguardia
+                </span>
+                <h1 class="text-6xl md:text-8xl font-serif text-primary leading-[0.9] tracking-tighter mb-8">
+                    Tu cuerpo <br/>
+                    <span class="italic text-accent font-normal">en equilibrio</span>
+                </h1>
+                <p class="text-xl text-muted max-w-lg leading-relaxed mb-12 font-light">
+                    En <span class="text-primary font-semibold">Fisiotec</span> no solo tratamos el dolor; rediseñamos tu movilidad para que vivas sin límites. Un enfoque clínico premium en el corazón de la ciudad.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-8">
+    <a href="#contacto" class="bg-primary text-white px-8 py-4 rounded-full font-bold text-base md:text-lg shadow-premium hover:bg-accent transition-all text-center">
+        Reserva tu consulta
+    </a>
+    <a href="#servicios" class="flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-border font-bold text-base md:text-lg hover:bg-white transition-all">
+        Explorar servicios
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+        </svg>
+    </a>
+</div>
+            </div>
+
+            <div class="lg:col-span-5 relative animate-fade-up" style="animation-delay: 0.2s;">
+    <div class="relative z-10 group">
+        <div class="absolute -inset-4 border border-accent/20 rounded-[2rem] md:rounded-[3rem] translate-x-4 translate-y-4 -z-10 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500"></div>
+        
+        <video 
+    src="/public/img/video-hero.mp4" 
+    autoplay 
+    muted 
+    loop 
+    playsinline
+    preload="auto"
+    fetchpriority="high"
+    poster="/public/img/captura-hero.webp"
+    width="800"
+    height="600"
+    class="rounded-[2rem] md:rounded-[2.5rem] shadow-2xl object-cover h-[250px] md:h-[600px] w-full grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 pointer-events-none"
+>
+    Tu navegador no soporta videos.
+</video>
+        
+        <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-premium max-w-[180px] hidden md:block animate-float">
+            <p class="text-primary font-serif italic text-lg leading-tight">"Calidad técnica, trato humano."</p>
+            <p class="text-accent font-bold text-xs mt-3 uppercase tracking-widest">— Teresa García</p>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</section>
+
+<section id="servicios" class="py-32 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    
+    <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+      <div class="max-w-2xl">
+        <span class="text-accent font-bold uppercase text-xs tracking-[0.3em] mb-4 block">Especialidades</span>
+        <h2 class="text-5xl md:text-6xl font-serif text-primary leading-tight">
+          Nuestra propuesta <br/> 
+          <span class="italic font-normal text-accent">de bienestar</span>
+        </h2>
+      </div>
+      <p class="text-muted text-lg max-w-sm font-light leading-relaxed border-l border-border pl-6">
+        Nos centramos en la excelencia técnica. Dos pilares fundamentales para recuperar tu equilibrio natural.
+      </p>
+    </div>
+
+   <div class="grid md:grid-cols-2 gap-10 lg:gap-16">
+  
+  <ServiceCard 
+    index="01"
+    title="Fisioterapia Deportiva" 
+    description="Optimización del rendimiento y recuperación acelerada. Utilizamos terapia manual avanzada y ejercicio terapéutico para asegurar una vuelta al deporte segura y eficiente." 
+  >
+    <svg slot="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/>
+      <path d="M2 20h20"/>
+      <path d="M14 12v.01"/>
+      <path d="M10 12v.01"/>
+      <path d="M14 16v.01"/>
+      <path d="M10 16v.01"/>
+    </svg>
+  </ServiceCard>
+  
+  <ServiceCard 
+    index="02"
+    title="Osteopatía Avanzada" 
+    description="Restauramos el equilibrio global de tu cuerpo mediante técnicas manuales de precisión. Un enfoque holístico que busca la causa raíz de tu dolencia." 
+  >
+    <svg slot="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+      <path d="m9 12 2 2 4-4"/>
+    </svg>
+  </ServiceCard>
+
+</div>
+
+    <div class="mt-20 flex justify-center opacity-20">
+        <div class="h-[1px] w-full max-w-xs bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+    </div>
+  </div>
+</section>
+
+		<section id="tarifas" class="py-32 bg-canvas relative overflow-hidden">
+  <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-bodyBg to-transparent"></div>
+
+  <div class="max-w-5xl mx-auto px-6 lg:px-12">
+    <div class="text-center mb-20">
+      <span class="text-accent font-bold uppercase text-xs tracking-[0.3em] mb-4 block animate-fade-up">Inversión en salud</span>
+      <h2 class="text-5xl md:text-7xl font-serif text-primary mb-8 animate-fade-up">Tarifas <span class="italic font-normal">&</span> Bonos</h2>
+      <div class="w-20 h-1 bg-accent mx-auto rounded-full animate-fade-up"></div>
+    </div>
+
+    <PricingTable />
+  </div>
+</section>
+
+<section id="equipo" class="py-32 bg-white relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid lg:grid-cols-12 gap-20 items-center">
+
+<div class="lg:col-span-6 order-2 lg:order-1">
+    <div class="relative z-10 group">
+      <div class="absolute inset-0 bg-accent/10 rounded-[2.5rem] md:rounded-[4rem] rotate-3 group-hover:rotate-0 transition-transform duration-700 -z-10"></div>
+      
+      <img 
+  src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=60&w=800&fm=webp" 
+  alt="Teresa García - Directora de Fisiotec" 
+  loading="lazy"
+  width="800"
+  height="650"
+  class="rounded-[2.5rem] md:rounded-[3.5rem] shadow-2xl grayscale hover:grayscale-0 transition-all duration-1000 w-full h-[300px] md:h-[650px] object-cover object-top" 
+/>
+
+      <div class="absolute top-5 -right-4 md:-right-8 w-24 h-24 md:w-32 md:h-32 bg-primary rounded-full hidden md:flex items-center justify-center p-4 shadow-premium rotate-12 animate-float">
+         <span class="text-[10px] text-white font-bold uppercase tracking-[0.2em] text-center">Calidad Certificada</span>
+      </div>
+    </div>
+</div>
+
+      <div class="lg:col-span-6 order-1 lg:order-2">
+        <div class="max-w-xl">
+          <span class="text-accent font-bold uppercase text-xs tracking-[0.4em] mb-6 block">La Visión</span>
+          <h2 class="text-5xl md:text-7xl font-serif text-primary leading-[1.1] mb-8">
+            Ciencia y <span class="italic font-normal text-accent">empatía</span> tras cada sesión.
+          </h2>
+          
+          <div class="space-y-6 text-lg text-muted font-light leading-relaxed">
+            <p>
+              Soy <span class="text-primary font-semibold">Teresa García</span>, y entiendo el cuerpo humano como una unidad donde cada tensión cuenta una historia. Mi misión en Fisiotec es descifrar esa historia para devolverte el equilibrio.
+            </p>
+            <p>
+              Con más de una década de experiencia clínica, he aprendido que la excelencia técnica solo es efectiva cuando se acompaña de una escucha activa. Aquí, no eres un número de expediente; eres un proceso de mejora continua.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-12 pt-12 mt-12 border-t border-border/60">
+            <div class="group">
+              <p class="block text-4xl font-serif font-bold text-primary group-hover:text-accent transition-colors mb-2">+10</p>
+              <p class="text-[10px] uppercase tracking-widest font-black text-muted">Años de Praxis</p>
+            </div>
+            <div class="group">
+              <p class="block text-4xl font-serif font-bold text-primary group-hover:text-accent transition-colors mb-2">4.521</p>
+              <p class="text-[10px] uppercase tracking-widest font-black text-muted">Colegiada Oficial</p>
+            </div>
+          </div>
+
+          <div class="mt-16">
+             <p class="font-serif italic text-2xl text-primary/40 leading-tight">
+               "El movimiento es vida, y la vida debe ser sin dolor."
+             </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="blog" class="py-32 bg-canvas">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    
+    <div class="grid lg:grid-cols-12 gap-8 mb-20 items-end">
+      <div class="lg:col-span-8">
+        <span class="text-accent font-bold uppercase text-xs tracking-[0.4em] mb-4 block">Divulgación</span>
+        <h2 class="text-5xl md:text-7xl font-serif text-primary">Crónicas de <br/> <span class="italic font-normal">Bienestar</span></h2>
+      </div>
+      <div class="lg:col-span-4 lg:text-right pb-2">
+        <a href="#" class="inline-block text-sm font-bold uppercase tracking-widest border-b-2 border-primary pb-2 hover:text-accent hover:border-accent transition-all">
+          Archivo Completo
+        </a>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+      {posts.map((post) => (
+        <BlogCard 
+          slug={post.slug}
+          title={post.title}
+          excerpt={post.excerpt}
+          date={post.date}
+          image={post.image}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+		<section id="ubicacion" class="py-32 bg-white relative">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid lg:grid-cols-12 gap-16 items-start">
+      
+      <div class="lg:col-span-5">
+        <span class="text-accent font-bold uppercase text-xs tracking-[0.4em] mb-6 block">Encuéntranos</span>
+        <h2 class="text-5xl md:text-6xl font-serif text-primary leading-tight mb-12">
+          Salud y bienestar <br/> en <span class="italic font-normal text-accent">Consuegra.</span>
+        </h2>
+
+        <div class="space-y-12">
+          <div class="flex gap-6 group">
+            <div class="w-12 h-12 bg-canvas rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-accent group-hover:text-white transition-all duration-500">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xs font-black uppercase tracking-widest text-primary mb-2">Dirección</h3>
+              <p class="text-lg text-muted font-light leading-relaxed">
+                C. Orden de Calatrava, 27, 45700 Consuegra, Toledo
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-6 group">
+            <div class="w-12 h-12 bg-canvas rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-accent group-hover:text-white transition-all duration-500">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xs font-black uppercase tracking-widest text-primary mb-2">Horario de Clínica</h3>
+              <ul class="text-lg text-muted font-light space-y-1">
+                <li class="flex justify-between gap-8"><span>Lunes — Jueves</span> <span class="text-primary font-medium">09:00 - 20:00</span></li>
+                <li class="flex justify-between gap-8"><span>Viernes</span> <span class="text-primary font-medium">09:00 - 15:00</span></li>
+                <li class="text-accent/50 italic text-sm mt-2">Fines de semana cerrados por descanso.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 relative h-[600px] w-full group">
+        <div class="absolute -inset-4 border border-accent/5 rounded-[3rem] -rotate-1 group-hover:rotate-0 transition-transform duration-700"></div>
+        
+        <div class="w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl grayscale contrast-[1.1] brightness-[1.05] hover:grayscale-0 transition-all duration-1000">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3080.308973942278!2d-3.6059310237863422!3d39.46234807160888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd698fb78fa2ff21%3A0x40f2ff124e0cbb7f!2sFisiotec%20Cl%C3%ADnica%20Fisioterapia%20Teresa%20Guti%C3%A9rrez!5e0!3m2!1ses!2ses!4v1770121775928!5m2!1ses!2ses" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicación de Fisiotec Clínica en Google Maps">
+          </iframe>
+        </div>
+
+        <a 
+          href="http://googleusercontent.com/maps.google.com/6" 
+          target="_blank"
+          rel="noopener noreferrer"
+          class="absolute bottom-10 right-10 bg-primary text-white px-6 py-4 rounded-2xl shadow-premium hover:bg-accent transition-colors flex items-center gap-3 font-bold text-xs uppercase tracking-widest"
+        >
+          Cómo llegar
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+	</main>
+	<Footer />
+</Layout>

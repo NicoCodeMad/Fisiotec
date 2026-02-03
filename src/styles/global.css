@@ -1,0 +1,77 @@
+/* Google Fonts se cargan ahora en Layout.astro con preload para mejor performance */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Variables de color actualizadas */
+  --color-bgBody: #F3F4F6;
+  --color-bgCard: #FFFFFF;
+  --color-primary: #111827;
+  --color-muted: #4B5563;
+  --color-accent: #156b5c; /* Color verde azulado más oscuro para mejor contraste (WCAG AA) */
+  --color-border: #E5E7EB;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Evita el parpadeo de fuentes en Safari/Chrome */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    /* Usamos tu variable de fondo guardada */
+    @apply bg-[var(--color-bgBody)] text-[var(--color-primary)] antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Estilos para que la tipografía Serif luzca de lujo */
+  h1, h2, h3, .font-serif {
+    font-family: 'Playfair Display', serif;
+    @apply tracking-tight;
+  }
+  
+  /* Optimización para evitar forced reflows - especificar dimensiones en imágenes y videos */
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Mejora de performance para animaciones usando GPU */
+  .animate-fade-up,
+  .animate-float {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+  }
+}
+
+@layer components {
+  /* Clase para el fondo con "grano" sutil, muy usado en diseño de autor */
+  .bg-grainy {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    opacity: 0.03;
+  }
+}
+
+/* Optimizaciones de performance adicionales */
+@layer utilities {
+  /* Usar contain para mejorar rendering */
+  .contain-layout {
+    contain: layout;
+  }
+  
+  .contain-paint {
+    contain: paint;
+  }
+  
+  /* Forzar aceleración por GPU en elementos animados */
+  .gpu-accelerate {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+}

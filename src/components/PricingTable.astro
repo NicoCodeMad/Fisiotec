@@ -1,0 +1,54 @@
+---
+const rates = [
+  { name: "Consulta de Fisioterapia", price: "55€", detail: "Valoración inicial + tratamiento manual (50 min)", popular: false },
+  { name: "Sesión de Osteopatía", price: "65€", detail: "Enfoque estructural y funcional integral", popular: false },
+  { name: "Bono 5 Sesiones", price: "250€", detail: "Ahorro de 25€ · 50€/sesión", popular: false },
+  { name: "Bono 10 Sesiones", price: "450€", detail: "Nuestra mejor tarifa · 45€/sesión", popular: true },
+];
+---
+
+<div class="relative py-12">
+  <div class="space-y-4">
+    {rates.map((rate) => (
+      <div class={`group relative p-8 rounded-[2rem] transition-all duration-500 flex flex-col md:flex-row md:items-center justify-between gap-6 ${rate.popular ? 'bg-primary text-white shadow-premium scale-[1.02] z-10' : 'bg-white/50 hover:bg-white border border-border/50 hover:border-accent/20'}`}>
+        
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-1">
+            <h3 class={`text-2xl font-serif font-bold ${rate.popular ? 'text-white' : 'text-primary'}`}>
+              {rate.name}
+            </h3>
+            {rate.popular && (
+              <span class="bg-accent text-white text-[10px] uppercase font-black px-3 py-1 rounded-full tracking-widest animate-pulse">
+                Recomendado
+              </span>
+            )}
+          </div>
+          <p class={`text-sm font-light ${rate.popular ? 'text-white/70' : 'text-muted'}`}>
+            {rate.detail}
+          </p>
+        </div>
+
+        <div class="flex items-center gap-8">
+          <div class="text-right">
+            <span class={`text-4xl font-serif font-bold ${rate.popular ? 'text-accent' : 'text-primary'}`}>
+              {rate.price}
+            </span>
+          </div>
+          
+          <a 
+            href="https://wa.me/34600000000" 
+            class={`px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 ${rate.popular ? 'bg-white text-primary hover:bg-accent hover:text-white' : 'bg-primary text-white hover:bg-accent'}`}
+          >
+            Reservar
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="mt-12 flex items-center justify-center gap-4 opacity-40">
+    <div class="h-[1px] w-12 bg-primary"></div>
+    <p class="text-[10px] uppercase tracking-[0.4em] font-bold text-primary">Precios con IVA incluido</p>
+    <div class="h-[1px] w-12 bg-primary"></div>
+  </div>
+</div>

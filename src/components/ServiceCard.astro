@@ -1,0 +1,35 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  index: string;
+  // Cambiamos el tipo de icon de string a any para recibir el SVG
+}
+
+const { title, description, index } = Astro.props;
+---
+
+<div class="relative bg-white/40 backdrop-blur-sm p-10 rounded-[2.5rem] border border-white/50 hover:bg-white hover:shadow-premium transition-all duration-500 group overflow-hidden h-full">
+  
+  <span class="absolute top-6 right-8 text-5xl font-serif italic text-primary/5 group-hover:text-accent/10 transition-colors duration-500">
+    {index}
+  </span>
+
+  <div class="relative w-16 h-16 mb-10 text-primary group-hover:text-accent transition-colors duration-500">
+    <div class="absolute inset-0 bg-accent/5 rounded-2xl rotate-6 group-hover:rotate-12 transition-transform duration-500"></div>
+    
+    <div class="relative flex items-center justify-center h-full w-full p-3">
+      <slot name="icon" /> </div>
+  </div>
+
+  <div class="relative">
+    <h3 class="text-2xl font-serif font-bold text-primary mb-4 group-hover:text-accent transition-colors">
+      {title}
+    </h3>
+    <p class="text-muted leading-relaxed font-light group-hover:text-primary/80 transition-colors">
+      {description}
+    </p>
+  </div>
+
+  <div class="absolute bottom-0 left-0 w-0 h-1.5 bg-accent transition-all duration-700 group-hover:w-full"></div>
+</div>

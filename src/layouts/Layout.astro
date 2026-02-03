@@ -1,0 +1,70 @@
+---
+import '../styles/global.css';
+
+interface Props {
+    title?: string;
+    description?: string;
+}
+
+const { 
+    title = "FisioVital | Fisioterapia y Osteopatía", 
+    description = "Recupera tu movilidad con especialistas en fisioterapia deportiva y de espalda en Madrid." 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        
+        <!-- Preconnect a Google Fonts para mejorar performance -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        
+        <!-- Preload de fuentes críticas para evitar render-blocking -->
+        <link 
+            rel="preload" 
+            as="style"
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap"
+        />
+        <link 
+            rel="stylesheet" 
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap"
+            media="print" 
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link 
+                rel="stylesheet" 
+                href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap"
+            />
+        </noscript>
+        
+        <title>{title}</title>
+    </head>
+    <body class="bg-bodyBg text-primary selection:bg-accent/30 selection:text-primary antialiased overflow-x-hidden font-sans">
+        
+        <div class="fixed inset-0 pointer-events-none z-[9999] opacity-[0.03] bg-grainy"></div>
+
+        <div class="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden pointer-events-none">
+            <div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-accent/5 blur-[120px] rounded-full"></div>
+            <div class="absolute top-[40%] -right-[5%] w-[30%] h-[50%] bg-primary/5 blur-[100px] rounded-full"></div>
+        </div>
+
+        <slot />
+
+    </body>
+</html>
+
+<style is:global>
+    /* Variables de color actualizadas */
+    :root {
+        --color-bgBody: #F3F4F6;
+        --color-primary: #111827;
+        --color-accent: #156b5c;
+    }
+</style>

@@ -1,0 +1,48 @@
+---
+interface Props {
+  title: string;
+  excerpt: string;
+  date: string;
+  image: string;
+  slug: string;
+}
+
+const { title, excerpt, date, image, slug } = Astro.props;
+---
+
+<a 
+  href={`/blog/${slug}`} 
+  class="group block relative overflow-hidden rounded-[2.5rem] bg-white transition-all duration-700 hover:shadow-premium"
+>
+  <div class="h-[400px] overflow-hidden relative">
+    <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+    <img 
+      src={image} 
+      alt={title} 
+      loading="lazy"
+      width="800"
+      height="400"
+      class="w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
+    />
+    
+    <div class="absolute top-6 left-6 z-20">
+      <span class="bg-white/90 backdrop-blur-md text-primary text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-full shadow-sm">
+        {date}
+      </span>
+    </div>
+  </div>
+
+  <div class="p-10">
+    <h3 class="text-3xl font-serif font-bold text-primary mb-4 leading-tight group-hover:text-accent transition-colors duration-300">
+      {title}
+    </h3>
+    <p class="text-muted font-light leading-relaxed mb-8 line-clamp-2">
+      {excerpt}
+    </p>
+    
+    <div class="flex items-center gap-4">
+      <div class="h-[1px] w-8 bg-accent group-hover:w-16 transition-all duration-500"></div>
+      <span class="text-xs font-bold uppercase tracking-widest text-primary">Leer Crónica</span>
+    </div>
+  </div>
+</a>

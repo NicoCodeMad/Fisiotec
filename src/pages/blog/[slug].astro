@@ -1,0 +1,124 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { posts } from '../../data/post';
+
+export async function getStaticPaths() {
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+
+// Filtramos para mostrar otros artículos (excepto el actual)
+const relatedPosts = posts.filter(p => p.slug !== post.slug).slice(0, 2);
+---
+
+<Layout title={`${post.title} | FisioVital`}>
+  <Header />
+  
+  <main class="pt-40 pb-24">
+    <article class="max-w-4xl mx-auto px-6 lg:px-12">
+      <div class="text-center mb-16 animate-fade-up">
+        <a href="/#blog" class="inline-flex items-center gap-2 text-accent font-bold uppercase text-[10px] tracking-[0.3em] mb-8 hover:gap-4 transition-all">
+          ← Volver a las Crónicas
+        </a>
+        <h1 class="text-5xl md:text-7xl font-serif text-primary leading-tight mb-8">
+          {post.title}
+        </h1>
+        <div class="flex items-center justify-center gap-6 text-muted text-sm font-light">
+          <span class="flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-accent"></span>
+            {post.date}
+          </span>
+          <span class="flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-accent"></span>
+            5 min de lectura
+          </span>
+        </div>
+      </div>
+
+      <div class="relative mb-20 animate-fade-up" style="animation-delay: 0.2s;">
+        <div class="absolute -inset-4 border border-accent/10 rounded-[3rem] rotate-1 -z-10"></div>
+        <img 
+          src={post.image} 
+          alt={post.title} 
+          width="800"
+          height="500"
+          loading="eager"
+          class="w-full h-[500px] object-cover rounded-[2.5rem] shadow-2xl" 
+        />
+      </div>
+
+      <div class="prose prose-lg prose-slate mx-auto font-light leading-relaxed text-muted 
+        prose-headings:font-serif prose-headings:text-primary prose-headings:font-bold
+        prose-strong:text-primary prose-strong:font-semibold
+        prose-blockquote:border-accent prose-blockquote:italic prose-blockquote:text-primary/70">
+        
+        <p class="text-2xl font-serif italic text-primary mb-12 leading-snug">
+          {post.excerpt}
+        </p>
+
+        <p>
+          En <strong>FisioVital</strong>, creemos que la educación del paciente es el primer paso hacia una recuperación duradera. No se trata solo de lo que sucede en la camilla, sino de cómo integras estos conocimientos en tu vida diaria.
+        </p>
+        
+        <h3>Un enfoque basado en la evidencia</h3>
+        <p>
+          Cada técnica aplicada, desde la terapia manual hasta la punción seca, está respaldada por estudios clínicos recientes. En este artículo profundizamos en cómo pequeños cambios en tu ergonomía pueden reducir la carga sobre tus vértebras cervicales hasta en un 40%.
+        </p>
+
+        <blockquote>
+          "La salud no es la ausencia de enfermedad, sino la presencia de vitalidad en cada movimiento."
+        </blockquote>
+
+        <p>
+          {post.content}
+        </p>
+      </div>
+
+      <div class="mt-20 pt-10 border-t border-border flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="flex gap-4">
+          <span class="px-4 py-1.5 bg-canvas rounded-full text-xs font-bold text-muted uppercase">Salud</span>
+          <span class="px-4 py-1.5 bg-canvas rounded-full text-xs font-bold text-muted uppercase">Bienestar</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <span class="text-xs font-bold uppercase tracking-widest">Compartir:</span>
+          <div class="flex gap-4">
+            <button class="text-muted hover:text-accent transition-colors">Twitter</button>
+            <button class="text-muted hover:text-accent transition-colors">LinkedIn</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <section class="mt-32 bg-canvas py-24">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <h2 class="text-4xl font-serif text-primary mb-16">Otras lecturas <span class="italic text-accent">recomendadas</span></h2>
+        <div class="grid md:grid-cols-2 gap-12">
+          {relatedPosts.map(p => (
+            <a href={`/blog/${p.slug}`} class="group flex gap-6 items-center">
+              <img 
+                src={p.image} 
+                alt={p.title}
+                width="128"
+                height="128"
+                loading="lazy"
+                class="w-32 h-32 rounded-2xl object-cover grayscale group-hover:grayscale-0 transition-all shadow-lg" 
+              />
+              <div>
+                <span class="text-[10px] font-bold text-accent uppercase tracking-widest">{p.date}</span>
+                <h3 class="text-xl font-serif font-bold text-primary group-hover:text-accent transition-colors mt-1">{p.title}</h3>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
